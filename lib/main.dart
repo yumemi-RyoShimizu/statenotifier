@@ -44,14 +44,14 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              Provider.of<CountState>(context, listen: true).count.toString(),
+              context.select<CountState, String>((s) => s.count.toString()),
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Provider.of<CounterController>(context, listen: false).increment(),
+        onPressed: () => context.read<CounterController>().increment(),
         child: Icon(Icons.add),
       ),
     );
